@@ -2,12 +2,13 @@
 <widget id="com.common.news" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>مركز كومون الإعلامي</name>
     <description>
-        news app
+        أخبار السودان و العالم من مركز كومون الإعلامي
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
+    <author email="omaralfarouk@hotmail.com" href="http://phonegap.com">
         omyalpha
     </author>
     <content src="index.html" />
-	<access origin="webhosting.sd" />
+	<access origin="*" />
 	<icon src="icon.png" />
+	<splash src="splash.png" />
 </widget>
