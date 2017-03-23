@@ -8,6 +8,6 @@
         omyalpha
     </author>
     <content src="index.html" />
-    <access origin="*" />
+	<access origin="webhosting.sd" />
 	<icon src="icon.png" />
 </widget>
