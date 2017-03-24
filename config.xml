@@ -7,7 +7,7 @@
     <author email="omaralfarouk@hotmail.com" href="http://phonegap.com">
         omyalpha
     </author>
-    <content src="/" />
+    <content src="index.html" />
 	<access origin="http://127.0.0.1*" />
 	<access origin="http://webhosting.sd" subdomains="true" />
 	<access origin=".*" /> 
