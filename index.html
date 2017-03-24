@@ -204,7 +204,7 @@
 	console.log('Starting index page');
 		var indexText ="";
 		$.ajax({
-		  url: "http://webhosting.sd/common7/getentries.php",
+		  url: "http://webhosting.sd/common7/getentries.php?callback=?",
 		  dataType: "jsonp",
 		  jsonpCallback: "jsonCallback",
 		  success: function jsonCallback(data){
@@ -240,13 +240,12 @@
 						indexText += '<h2>';
 						indexText += '<a href="details.html?getid=' + data[i].id +'">' + data[i].title + '</a>';
 						indexText += '</h2>';
-						indexText += '<span class="badge badge-secondary badge-square text-uppercase">' + catname + '</span>'
+						indexText += '<span class="badge badge-secondary badge-square text-uppercase">' + catname + '</span>';
 						indexText += '</div>';
 						indexText += '<img width="100%" class="article-bg" src="' + thisimageurl + '" />';
 						indexText += '</article>';
 					  });
 					  $("#indexHtml").html(indexText);
-					  console.log(indexText);
 					},
            error:function(XMLHttpRequest,textStatus,errorThrown){
 				alert(textStatus + '1; ' + errorThrown);
@@ -260,7 +259,7 @@
 		var getid = page.query.getid;
 		var detailsText ="";
 				$.ajax({
-                    url:'http://webhosting.sd/common7/entry.php',
+                    url:'http://webhosting.sd/common7/entry.php?callback=?',
 					data: {getid:getid},
                     dataType: "jsonp",
 					jsonpCallback: "jsonCallback",
@@ -303,7 +302,7 @@ console.log('Starting newscat page');
 	var htmlText ="";
 	
             $.ajax({
-                    url:'http://webhosting.sd/common7/getcat.php',
+                    url:'http://webhosting.sd/common7/getcat.php?callback=?',
 					data: {cat:getid},
                     dataType: "jsonp",
 					jsonpCallback: "jsonCallback",
