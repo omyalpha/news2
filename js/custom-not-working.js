@@ -1,40 +1,13 @@
-// Initialize app
-function findElement(selector) {
-    var box = null;
-    return box = $(".page-on-center").length > 0 ? $(".view-main").find(".page-on-center " + selector) : $(".view-main").find(".page").find(selector);
-}
-
-function naxvarBg() {
-    var navbar = $(".navbar-anim-on-scroll"), box = null, cls = "active";
-    return 0 === navbar.length ? !1 : (box = $(".page-on-center").length > 0 ? navbar.next().find(".page-on-center .page-content") : navbar.next().find(".page .page-content"), 
-    box.scrollTop() > 10 ? navbar.addClass(cls) : navbar.removeClass(cls), void box.scroll(function() {
-        $(this).scrollTop() > 40 ? navbar.addClass(cls) : navbar.removeClass(cls);
-    }));
-}
-
-var myApp = new Framework7({
-    swipeBackPage: !1,
-    pushState: !0,
-    swipePanel: "left",
-    modalTitle: "Title"
-}), $$ = Dom7;
-
-
-var mainView = myApp.addView(".view-main", {
-    dynamicNavbar: !0
+myApp.onPageInit('indexpage', function (page) {
+	console.log('Starting index page');
 });
-
-$$(document).on("pageInit", function(e) {
-    var page = e.detail.page;
+$$(document).on('page:init', function (e) {
+console.log('Starting init');
+var page = e.detail.page;
 	
 	// index page
 	if (page.name === 'indexpage') {
-		console.log('Starting index page');		
-	}
-	
-	// news home page
-	if (page.name === 'home') {
-	console.log('Starting home page');
+	console.log('Starting index page');
 		var indexText ="";
 		$.ajax({
 		  url: "http://webhosting.sd/common7/getentries.php",
@@ -71,7 +44,7 @@ $$(document).on("pageInit", function(e) {
 						indexText += '<article class="rtl">';
 						indexText += '<div class="text">';
 						indexText += '<h2>';
-						indexText += '<a href="pages/details.html?getid=' + data[i].id +'">' + data[i].title + '</a>';
+						indexText += '<a href="details.html?getid=' + data[i].id +'">' + data[i].title + '</a>';
 						indexText += '</h2>';
 						indexText += '<span class="badge badge-secondary badge-square text-uppercase">' + catname + '</span>';
 						indexText += '</div>';
@@ -90,7 +63,6 @@ $$(document).on("pageInit", function(e) {
            }
 		});		
 	}
-	
 	// newscat page
 	if (page.name === 'newscat') {
 	console.log('Starting newscat page');
@@ -116,7 +88,7 @@ $$(document).on("pageInit", function(e) {
 								}
 								htmlText += '<div class="card card-header-pic">';
 								htmlText += '<div class="card-header color-white no-border" valign="bottom" style="background-image:url(\'' + thisimageurl + '\')">';
-								htmlText += '<a href="pages/details.html?getid=' + data[i].id + '">' + data[i].title + '</a>';
+								htmlText += '<a href="details.html?getid=' + data[i].id + '">' + data[i].title + '</a>';
 								htmlText += '</div>';
 								htmlText += '<div class="card-info">';
 								htmlText += '<div class="row">';
@@ -131,7 +103,7 @@ $$(document).on("pageInit", function(e) {
 								htmlText += '</div>';
 								htmlText += '</div>';
 								htmlText += '<div class="card-footer">';
-								htmlText += '<a class="link" href="pages/details.html?getid=' + data[i].id + '"> إقرأ المزيد <i class="fa fa-arrow-circle-left mr-5"></i></a>';
+								htmlText += '<a class="link" href="details.html?getid=' + data[i].id + '"> إقرأ المزيد <i class="fa fa-arrow-circle-left mr-5"></i></a>';
 								htmlText += '</div>';
 								htmlText += '</div>';
 							});
@@ -185,10 +157,5 @@ $$(document).on("pageInit", function(e) {
                     }
 				});
 	}
-	/////////// end
-
-	$(".zoom").swipebox(), $(".navbar").removeClass("navbar-clear"), "indexpage" !== page.name && "dashboard-1" !== page.name && "post" !== page.name && "menu" !== page.name && "login" !== page.name && "registration" !== page.name && "article" !== page.name && "splash" !== page.name || $(".navbar").addClass("navbar-clear");
-
-}), $(document).ready(function() {
-// enter here
 });
+myApp.init();

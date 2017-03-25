@@ -7,16 +7,12 @@
     <author email="omaralfarouk@hotmail.com" href="http://phonegap.com">
         omyalpha
     </author>
-    <content src="index.html" />
-	<access origin="http://127.0.0.1*" />
-	<access origin="http://webhosting.sd" subdomains="true" />
-	<access origin=".*" /> 
+    <content src="index.html" /> 
 	<icon src="icon.png" />
 	<splash src="splash.png" />
-	<allow-intent href="http://*/*" /> 
-	<allow-intent href="https://*/*" /> 
-	<allow-intent href="tel:*" /> 
-	<allow-intent href="sms:*" /> 
-	<allow-intent href="mailto:*" /> 
-	<allow-intent href="geo:*" />
+	<access origin="*" />
+	<allow-intent href="*" />
+	<allow-navigation href="*" />
+
+	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
 </widget>

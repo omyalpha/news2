@@ -1,40 +1,6 @@
-// Initialize app
-function findElement(selector) {
-    var box = null;
-    return box = $(".page-on-center").length > 0 ? $(".view-main").find(".page-on-center " + selector) : $(".view-main").find(".page").find(selector);
-}
-
-function naxvarBg() {
-    var navbar = $(".navbar-anim-on-scroll"), box = null, cls = "active";
-    return 0 === navbar.length ? !1 : (box = $(".page-on-center").length > 0 ? navbar.next().find(".page-on-center .page-content") : navbar.next().find(".page .page-content"), 
-    box.scrollTop() > 10 ? navbar.addClass(cls) : navbar.removeClass(cls), void box.scroll(function() {
-        $(this).scrollTop() > 40 ? navbar.addClass(cls) : navbar.removeClass(cls);
-    }));
-}
-
-var myApp = new Framework7({
-    swipeBackPage: !1,
-    pushState: !0,
-    swipePanel: "left",
-    modalTitle: "Title"
-}), $$ = Dom7;
-
-
-var mainView = myApp.addView(".view-main", {
-    dynamicNavbar: !0
-});
-
-$$(document).on("pageInit", function(e) {
-    var page = e.detail.page;
-	
 	// index page
-	if (page.name === 'indexpage') {
-		console.log('Starting index page');		
-	}
-	
-	// news home page
-	if (page.name === 'home') {
-	console.log('Starting home page');
+	myApp.onPageInit('indexpage', function (page) {
+	console.log('Starting index page');
 		var indexText ="";
 		$.ajax({
 		  url: "http://webhosting.sd/common7/getentries.php",
@@ -89,10 +55,9 @@ $$(document).on("pageInit", function(e) {
 				alert(textStatus + '1; ' + errorThrown);
            }
 		});		
-	}
-	
+	});
 	// newscat page
-	if (page.name === 'newscat') {
+	myApp.onPageInit('newscat', function (page) {
 	console.log('Starting newscat page');
 	//var loadNews();
 		$(function () {
@@ -145,10 +110,10 @@ $$(document).on("pageInit", function(e) {
 
 					});
 		});
-	}
+	});
 
 	// details page				
-	if (page.name === 'details') {
+	myApp.onPageInit('details', function (page) {
 	console.log('Starting details page');
 		var getid = page.query.getid;
 		var detailsText ="";
@@ -184,11 +149,4 @@ $$(document).on("pageInit", function(e) {
                         alert(textStatus + '2; ' + errorThrown);
                     }
 				});
-	}
-	/////////// end
-
-	$(".zoom").swipebox(), $(".navbar").removeClass("navbar-clear"), "indexpage" !== page.name && "dashboard-1" !== page.name && "post" !== page.name && "menu" !== page.name && "login" !== page.name && "registration" !== page.name && "article" !== page.name && "splash" !== page.name || $(".navbar").addClass("navbar-clear");
-
-}), $(document).ready(function() {
-// enter here
-});
+	});
